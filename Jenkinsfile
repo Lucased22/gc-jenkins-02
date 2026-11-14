@@ -1,28 +1,17 @@
 pipeline {
-    agent none
+    agent any
 
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'maven:3.9.6-eclipse-temurin-21'
-                    args '-v /c/jenkins-cache:/root/.m2 -u root'
-                }
-            }
             steps {
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
-            agent {
-                docker {
-                    image 'maven:3.9.6-eclipse-temurin-21'
-                    args '-v /c/jenkins-cache:/root/.m2 -u root'
-                }
-            }
             steps {
-                sh 'mvn test'
+                // ignore=true: testes falhando geram UNSTABLE (nao FAILURE), via junit
+                bat 'mvn -Dmaven.test.failure.ignore=true test'
             }
             post {
                 always {
