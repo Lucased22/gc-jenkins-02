@@ -3,7 +3,8 @@ package org.example;
 public class Main {
 
     public static double celsiusToFahrenheit(double value) {
-        return value * 9 / 5 + 32;
+        // fórmula propositalmente errada para falhar os testes
+        return value * 9 / 5 + 30;
     }
 
     public static double fahrenheitToCelsius(double value) {
