@@ -3,7 +3,7 @@ package org.example;
 public class Main {
 
     public static double celsiusToFahrenheit(double value) {
-        return value * 9 / 5 + 32;
+        return value * 9 / 5 + 32
     }
 
     public static double fahrenheitToCelsius(double value) {
